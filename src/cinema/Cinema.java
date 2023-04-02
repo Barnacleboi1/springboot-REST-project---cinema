@@ -7,27 +7,27 @@ import java.util.*;
 public class Cinema {
     private int total_rows;
     private int total_columns;
-    private List<Seat> availibleSeats;
+    private List<Seat> available_seats;
 
     public Cinema(int rows, int columns) {
         this.total_rows = rows;
         this.total_columns = columns;
-        this.availibleSeats = new ArrayList<>();
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
-                availibleSeats.add(new Seat(i, j));
+        this.available_seats = new ArrayList<>();
+        for (int i = 1; i < total_rows + 1; i++) {
+            for (int j = 1; j < total_columns + 1; j++) {
+                available_seats.add(new Seat(i, j));
             }
         }
     }
 
-    public int getRows() {
+    public int getTotal_rows() {
         return total_rows;
     }
-    public int getColumns() {
+    public int getTotal_columns() {
         return total_columns;
     }
 
-    public List<Seat> getAvailibleSeats() {
-        return availibleSeats;
+    public List<Seat> getAvailable_seats() {
+        return available_seats;
     }
 }
