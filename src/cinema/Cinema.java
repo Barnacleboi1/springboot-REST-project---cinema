@@ -1,6 +1,9 @@
 package cinema;
 
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
+
 import java.util.*;
 
 
@@ -19,7 +22,15 @@ public class Cinema {
             }
         }
     }
+    public boolean purchaseSeat(Seat seat) {
 
+        if (availableSeats.contains(seat)) {
+            availableSeats.remove(seat);
+            return true;
+        } else {
+            return false;
+        }
+    }
     public int getTotalRows() {
         return totalRows;
     }

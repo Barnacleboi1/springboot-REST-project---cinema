@@ -3,10 +3,16 @@ package cinema;
 public class Seat {
     private int row;
     private int column;
-
+    private int price;
     public Seat(int row, int column) {
         this.row = row;
         this.column = column;
+        if (row >= 4) {
+            this.price = 10;
+        }
+        else {
+            this.price = 8;
+        }
     }
 
     public int getRow() {
@@ -16,4 +22,7 @@ public class Seat {
         return column;
     }
 
+    public int getPrice() {
+        return price;
+    }
 }
