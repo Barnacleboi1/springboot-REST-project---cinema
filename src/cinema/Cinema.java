@@ -1,9 +1,6 @@
 package cinema;
 
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.server.ResponseStatusException;
-
 import java.util.*;
 
 
@@ -21,6 +18,9 @@ public class Cinema {
                 availableSeats.add(new Seat(i, j));
             }
         }
+    }
+    public void removeSeat(Seat seat) {
+        availableSeats.remove(seat);
     }
     public boolean purchaseSeat(Seat seat) {
 
