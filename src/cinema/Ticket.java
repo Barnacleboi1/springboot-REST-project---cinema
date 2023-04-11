@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.util.Objects;
-import java.util.UUID;
 
 public class Ticket {
     @JsonPropertyOrder({"token", "seat"})
