@@ -1,13 +1,17 @@
 package cinema;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Objects;
 
 public class Seat {
+    @JsonProperty
     private int row;
+    @JsonProperty
     private int column;
+    @JsonProperty
     private int price;
     public Seat() {
-
     }
     public Seat(int row, int column) {
         this.row = row;
@@ -24,6 +28,9 @@ public class Seat {
 
     public int getPrice() {
         return price;
+    }
+    public void setPrice() {
+        this.price = row<= 4 ? 10 : 8;
     }
 
     @Override

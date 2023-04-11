@@ -2,11 +2,14 @@ package cinema;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
 import java.util.Map;
+
+
 
 
 @RestController
@@ -21,13 +24,17 @@ public class CinemaController {
     }
 
     @PostMapping("/purchase")
-    public ResponseEntity<Map<String, Object>> purchaseSeat(@RequestBody SeatRequest seatRequest) {
-        return cinemaService.purchaseSeat(seatRequest);
+    public ResponseEntity<Map<String, Object>> purchaseSeat(@RequestBody Seat seat) {
+        return cinemaService.purchaseSeat(seat);
     }
 
     @PostMapping("/return")
     public ResponseEntity<Map<String, Object>> refundSeat(@RequestBody Ticket ticket) {
         return cinemaService.refundSeat(ticket);
+    }
+    @PostMapping("/stats")
+    public ResponseEntity<?> stats(@RequestParam(value = "password", required = false) String password) {
+        return cinemaService.stats(password);
     }
 }
 

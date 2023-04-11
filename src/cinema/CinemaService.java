@@ -1,9 +1,11 @@
 package cinema;
 
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
+
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,9 +19,8 @@ public class CinemaService {
     public Cinema getAvailibleSeats() {
         return cinema;
     }
-    public ResponseEntity<Map<String, Object>> purchaseSeat(@RequestBody SeatRequest seatRequest) {
-        Seat seat = new Seat (seatRequest.getRow(), seatRequest.getColumn());
-
+    public ResponseEntity<Map<String, Object>> purchaseSeat(@RequestBody Seat seat) {
+        seat.setPrice();
         boolean success = cinema.purchaseSeat(seat);
 
         if (success) {
@@ -57,6 +58,16 @@ public class CinemaService {
             return ResponseEntity.ok(Map.of("returned_ticket", returnedTicket.getSeat()));
         } catch (NullPointerException e){
             return new ResponseEntity<>(Map.of("error", WRONG_TOKEN_ERROR.toString()), HttpStatus.BAD_REQUEST);
+        }
+    }
+    public ResponseEntity<?> stats(String password) {
+        Statistics stats = new Statistics(cinema);
+
+        if (cinema.getPassword().equals(password)) {
+            return ResponseEntity.ok(stats);
+        }
+        else {
+            return new ResponseEntity<>(Map.of("error", WRONG_PASSWORD_ERROR.toString()), HttpStatus.UNAUTHORIZED);
         }
     }
 }
