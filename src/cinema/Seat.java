@@ -12,12 +12,7 @@ public class Seat {
     public Seat(int row, int column) {
         this.row = row;
         this.column = column;
-        if (row <= 4) {
-            this.price = 10;
-        }
-        else {
-            this.price = 8;
-        }
+        this.price = row <= 4 ? 10 : 8;
     }
 
     public int getRow() {
