@@ -16,7 +16,6 @@ import java.util.Map;
 public class CinemaController {
     @Autowired
     CinemaService cinemaService = new CinemaService();
-    Cinema cinema = new Cinema(9, 9);
 
     @GetMapping("/seats")
     public Cinema getSeats() {
